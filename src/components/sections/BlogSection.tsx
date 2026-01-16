@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar, User } from "lucide-react";
+import Image from "next/image"; // <--- Importante
 
 const articles = [
   {
@@ -10,8 +11,7 @@ const articles = [
     excerpt: "Entenda as novas regras sobre ajuda de custo, controle de ponto e direitos do trabalhador remoto.",
     date: "12 Mar, 2024",
     author: "Dr. Carlos Silva",
-    // TROQUEI A IMAGEM QUEBRADA POR ESTA NOVA:
-    image: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=2000&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=800&auto=format&fit=crop" // Reduzi o w=2000 para w=800
   },
   {
     category: "Família e Sucessões",
@@ -19,7 +19,7 @@ const articles = [
     excerpt: "Descubra como holdings familiares e testamentos podem evitar brigas e reduzir impostos no futuro.",
     date: "05 Mar, 2024",
     author: "Dra. Julia Mendes",
-    image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2070&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=800&auto=format&fit=crop"
   },
   {
     category: "Direito Empresarial",
@@ -27,13 +27,12 @@ const articles = [
     excerpt: "Sua empresa pode ter dinheiro a receber da Receita Federal. Veja como identificar créditos ocultos.",
     date: "28 Fev, 2024",
     author: "Dr. Carlos Silva",
-    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2026&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=800&auto=format&fit=crop"
   }
 ];
 
 export function BlogSection() {
   return (
-    // AQUI: Adicionei o id="blog" para o botão do menu funcionar
     <section id="blog" className="py-24 bg-white">
       <div className="container px-4 mx-auto">
         
@@ -63,14 +62,19 @@ export function BlogSection() {
               viewport={{ once: true }}
               className="group cursor-pointer flex flex-col h-full"
             >
+              {/* Container da Imagem Otimizado */}
               <div className="relative overflow-hidden rounded-xl aspect-video mb-6 bg-slate-100">
                 <div className="absolute inset-0 bg-primary/10 group-hover:bg-primary/0 transition-colors z-10" />
-                {/* Imagem Padrão HTML para evitar problemas com Next/Image por enquanto */}
-                <img 
+                
+                {/* AQUI ESTÁ A MÁGICA DO SEO E PERFORMANCE */}
+                <Image 
                   src={post.image} 
-                  alt={post.title}
+                  alt={`Imagem do artigo: ${post.title}`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
                 />
+
                 <div className="absolute top-4 left-4 z-20">
                   <span className="px-3 py-1 bg-white/90 backdrop-blur text-xs font-bold text-primary uppercase tracking-wider rounded-full">
                     {post.category}
@@ -78,6 +82,7 @@ export function BlogSection() {
                 </div>
               </div>
 
+              {/* Resto do conteúdo mantido igual... */}
               <div className="flex items-center gap-4 text-xs text-slate-400 mb-3">
                 <div className="flex items-center gap-1">
                   <Calendar className="w-3 h-3" />
@@ -103,14 +108,13 @@ export function BlogSection() {
             </motion.article>
           ))}
         </div>
-
-        <div className="mt-8 text-center md:hidden">
+        {/* ...Botão mobile mantido... */}
+         <div className="mt-8 text-center md:hidden">
           <a href="#" className="inline-flex items-center gap-2 text-accent font-bold">
             Ver todos os artigos 
             <ArrowRight className="w-4 h-4" />
           </a>
         </div>
-
       </div>
     </section>
   );
