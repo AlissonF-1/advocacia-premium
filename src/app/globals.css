@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  /* Configuração das Fontes */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-playfair), ui-serif, Georgia, serif;
+
+  /* Nossas Cores Personalizadas (Azul e Dourado) */
+  --color-primary: #0F172A;
+  --color-primary-foreground: #F8FAFC;
+  
+  --color-accent: #D4AF37;
+  --color-accent-hover: #B5952F;
+}
+
+/* Configurações Globais */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased;
+  }
+}
