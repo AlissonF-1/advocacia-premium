@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { CheckCircle2, Award, BookOpen } from "lucide-react";
-import Image from "next/image"; 
+import Image from "next/image"; // <--- Importante
 
 const credentials = [
   { icon: Award, text: "Mestre em Direito pela UFPI" },
@@ -55,7 +55,6 @@ export function AboutSection() {
               ))}
             </div>
 
-            {/* Assinatura Visual (Simulação) */}
             <div className="mt-10 font-serif text-3xl text-primary opacity-80 italic">
               Carlos Silva
             </div>
@@ -69,19 +68,19 @@ export function AboutSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative"
           >
-            {/* Elemento Decorativo de Fundo */}
             <div className="absolute -top-10 -right-10 w-64 h-64 bg-accent/10 rounded-full blur-3xl" />
             
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-8 border-slate-50">
-              {/* Substitua o src pela foto real do advogado */}
-              <img 
-                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop" 
+              {/* SOLUÇÃO DE PERFORMANCE: Next Image Otimizada */}
+              <Image 
+                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop" 
                 alt="Foto do Dr. Carlos Silva"
-                className="object-cover w-full h-full hover:scale-105 transition-transform duration-700"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover hover:scale-105 transition-transform duration-700"
               />
               
-              {/* Card Flutuante de Experiência */}
-              <div className="absolute bottom-8 left-8 bg-white/95 backdrop-blur shadow-lg p-4 rounded-lg border-l-4 border-accent max-w-[200px]">
+              <div className="absolute bottom-8 left-8 bg-white/95 backdrop-blur shadow-lg p-4 rounded-lg border-l-4 border-accent max-w-[200px] z-10">
                 <p className="text-3xl font-bold text-primary">15+</p>
                 <p className="text-sm text-slate-600 font-medium">Anos de experiência em tribunais superiores</p>
               </div>
