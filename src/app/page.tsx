@@ -16,9 +16,7 @@ export default function Home() {
     <main className="min-h-screen bg-slate-50 relative">
       
       {/* Header / Navegação */}
-      {/* Nota: Em um projeto maior, isso seria movido para um componente @/components/layout/Header.tsx 
-        Mantido aqui inline conforme solicitado para facilidade de visualização.
-      */}
+     
       <header className="fixed top-0 w-full z-50 bg-primary/95 backdrop-blur-md border-b border-white/10 shadow-md transition-all duration-300">
         <div className="container px-4 py-4 flex justify-between items-center text-white">
           <span className="text-xl font-serif font-bold text-accent tracking-tight">

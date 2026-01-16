@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { CheckCircle2, Award, BookOpen } from "lucide-react";
-import Image from "next/image"; // Importante para otimização
+import Image from "next/image"; 
 
 const credentials = [
   { icon: Award, text: "Mestre em Direito pela UFPI" },
